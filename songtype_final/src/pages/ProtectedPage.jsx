@@ -8,12 +8,12 @@ const ProtectedRoute = () => {
     const expiryTime = decodedToken.exp * 1000;
 
     if (Date.now() >= expiryTime) {
-      return <Navigate to='/login' />;
+      return <Navigate to="/login" />;
     }
 
     return <Outlet />;
   } else {
-    return <Navigate to='/login' />;
+    return <Navigate to="/login" />;
   }
 };
 
