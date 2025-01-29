@@ -130,7 +130,7 @@ const AddSong = () => {
           <div
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm"
             style={{
-              backgroundImage: `url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
+              // backgroundImage: `url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -188,7 +188,7 @@ const AddSong = () => {
           <div
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm"
             style={{
-              backgroundImage: `url("https://img.freepik.com/free-vector/musical-instruments-neon-style_18591-76796.jpg?t=st=1738757066~exp=1738760666~hmac=7c4166043df8bbdd72b2f9ba2b3c50d4df17b0e75c425853d066cbd18562a769&w=1380")`,
+              // backgroundImage: `url("https://img.freepik.com/free-vector/musical-instruments-neon-style_18591-76796.jpg?t=st=1738757066~exp=1738760666~hmac=7c4166043df8bbdd72b2f9ba2b3c50d4df17b0e75c425853d066cbd18562a769&w=1380")`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

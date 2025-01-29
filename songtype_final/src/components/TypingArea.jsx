@@ -1,17 +1,45 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useWordsStore } from "../store/useWords";
 import "./styles/TypingArea.css";
 import useTyping from "../hooks/useTyping";
 import BlurEffect from "./BlurEffect";
 import Timer from "./Timer";
-import { APP_STATE } from "../utils/constants";
+import { APP_STATE, GAME_MODE } from "../utils/constants";
+import useGameModeOpts from "../hooks/useGameModeOptions";
 
 const TypingArea = () => {
   const { words, isFocused, appState } = useWordsStore();
+  const { gameMode } = useGameModeOpts(); // Get current game mode
   const inputRef = useRef(null);
   const paragraphRef = useRef(null);
 
   useTyping(inputRef, paragraphRef);
+
+  // Function to play sound for the letter (Kids Mode)
+  const playLetterSound = (letter) => {
+    const audio = new Audio(`/src/assets/sound/${letter.toUpperCase()}.mp3`); // Ensure sounds are in public/sounds/
+    audio.play();
+  };
+
+  // Handle key press event
+  const handleKeyPress = (event) => {
+    if (gameMode === GAME_MODE.KIDS) {
+      const letter = event.key.toUpperCase();
+      if (letter >= "A" && letter <= "Z") {
+        playLetterSound(letter);
+      }
+    }
+  };
+
+  // Attach event listener for keypress
+  useEffect(() => {
+    if (gameMode === GAME_MODE.KIDS) {
+      window.addEventListener("keypress", handleKeyPress);
+    }
+    return () => {
+      window.removeEventListener("keypress", handleKeyPress);
+    };
+  }, [gameMode]);
 
   // Function to determine the class based on the letter's state
   const getLetterClass = (state) => {
@@ -40,13 +68,13 @@ const TypingArea = () => {
     <div
       className={`typing-area ${appState === APP_STATE.FINISHED && "hidden"}`}
     >
-      <time className='timer'>
+      <time className="timer">
         <Timer />
       </time>
-      <div className='blur-wrapper'>
-        <div className='words-wrapper'>
+      <div className="blur-wrapper">
+        <div className="words-wrapper">
           <div
-            id='paragraph'
+            id="paragraph"
             className={`words-container ${!isFocused && "blurred"}`}
             ref={paragraphRef}
             onClick={handleParagraphClick}
@@ -55,7 +83,7 @@ const TypingArea = () => {
               <span
                 id={`word-${wordIndex}`}
                 key={`word-${wordIndex}`}
-                className='word'
+                className="word"
               >
                 {wordObject.map(({ letter, index, state }) => (
                   <span
@@ -72,7 +100,7 @@ const TypingArea = () => {
         </div>
       </div>
 
-      <input className='typing-area-input' autoFocus ref={inputRef}></input>
+      <input className="typing-area-input" autoFocus ref={inputRef}></input>
     </div>
   );
 };

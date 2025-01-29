@@ -20,6 +20,9 @@ const useGameModeOpts = () => {
     if (mode === GAME_MODE.WORDS) {
       setSelectedWords(25);
     }
+    if (mode === GAME_MODE.KIDS) {
+      setSelectedWords(3);  // Set to 3 since we are displaying A, B, C for now
+    }
     setGameMode(mode);
   };
 

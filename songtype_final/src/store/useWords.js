@@ -104,6 +104,14 @@ export const useWordsStore = create(
           letterIndex: 0,
         });
       };
+      
+      //check for kids mode
+      if (get().gameMode === GAME_MODE.KIDS) {
+        const kidsLetters=["A","B","C","O"];
+        setWordsWithLettersAsObjects(kidsLetters);
+        return;
+      }
+      
 
       // if game mode is zen set the words to an empty array
       if (get().gameMode === GAME_MODE.ZEN) {

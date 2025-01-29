@@ -26,6 +26,7 @@ import {
   Screenshot,
 } from "../assets/icons/ResultsIcon";
 import { takeScreenshot } from "../utils/resultFunctions";
+import { FactoryIcon } from "lucide-react";
 
 export const APP_STATE = {
   STOPPED: "STOPPED",
@@ -45,6 +46,7 @@ export const GAME_MODE = {
   QUOTE: "QUOTE",
   ZEN: "ZEN",
   CUSTOM: "CUSTOM",
+  KIDS: "KIDS"
 };
 
 export const gameModeOptions = [
@@ -73,6 +75,11 @@ export const gameModeOptions = [
     text: "custom",
     value: GAME_MODE.CUSTOM,
   },
+  {
+    icon: FactoryIcon,//adding for kids game mode
+    text: "kids",
+    value: GAME_MODE.KIDS,
+  }
 ];
 
 export const footerLinks = [
